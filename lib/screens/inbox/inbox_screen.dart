@@ -10,7 +10,7 @@ class InboxScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Inbox')),
       body: ListView.separated(
         itemCount: 3,
-        itemBuilder: (context, index) => const ChatTile('Name'),
+        itemBuilder: (context, index) => ChatTile('Name', onTap: () {}),
         separatorBuilder: (context, index) => const SizedBox(height: 10),
         padding: const EdgeInsets.all(8.0),
       ),
