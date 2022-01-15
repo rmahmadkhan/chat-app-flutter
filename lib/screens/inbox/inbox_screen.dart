@@ -1,3 +1,4 @@
+import 'package:chat_app/screens/chat/chat_screen.dart';
 import 'package:chat_app/screens/inbox/components/chat_tile.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,13 @@ class InboxScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Inbox')),
       body: ListView.separated(
         itemCount: 3,
-        itemBuilder: (context, index) => ChatTile('Name', onTap: () {}),
+        itemBuilder: (context, index) => ChatTile(
+          'Name',
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ChatScreen()),
+          ),
+        ),
         separatorBuilder: (context, index) => const SizedBox(height: 10),
         padding: const EdgeInsets.all(8.0),
       ),
