@@ -17,6 +17,11 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const Text(
+                'Chat Demo',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
               MyTextField(hint: 'Email', controller: _emailController),
               const SizedBox(height: 10),
               MyTextField(hint: 'Password', controller: _passwordController),
