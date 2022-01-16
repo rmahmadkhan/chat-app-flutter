@@ -1,4 +1,5 @@
-import 'package:chat_app/screens/login/components/login_button.dart';
+import 'package:chat_app/screens/login/login_screen.dart';
+import 'package:chat_app/screens/signup/components/signup_button.dart';
 import 'package:chat_app/widgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -29,11 +30,26 @@ class SignupScreen extends StatelessWidget {
               const SizedBox(height: 10),
               MyTextField(hint: 'Password', controller: _passwordController),
               const SizedBox(height: 10),
-              LoginButton(
+              SignupButton(
+                nameController: _nameController,
                 emailController: _emailController,
                 passwordController: _passwordController,
               ),
               const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Already have an account?'),
+                  TextButton(
+                    onPressed: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()),
+                    ),
+                    child: const Text('Login'),
+                  ),
+                ],
+              ),
             ],
           ),
         ),

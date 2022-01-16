@@ -18,7 +18,7 @@ class SignupButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyButton(
-      title: 'Login',
+      title: 'Signup',
       onPressed: () => onPressed(context),
     );
   }
