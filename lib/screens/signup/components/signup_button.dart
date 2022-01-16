@@ -3,11 +3,13 @@ import 'package:chat_app/widgets/my_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class LoginButton extends StatelessWidget {
+class SignupButton extends StatelessWidget {
+  final TextEditingController nameController;
   final TextEditingController emailController;
   final TextEditingController passwordController;
 
-  const LoginButton({
+  const SignupButton({
+    required this.nameController,
     required this.emailController,
     required this.passwordController,
     Key? key,
@@ -16,17 +18,15 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyButton(
-      title: 'Login',
+      title: 'Signup',
       onPressed: () => onPressed(context),
     );
   }
 
-  void onPressed(
-    BuildContext context,
-  ) async {
+  void onPressed(BuildContext context) async {
     try {
       final userCredentials = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
+          .createUserWithEmailAndPassword(
               email: emailController.text, password: passwordController.text);
 
       final email = userCredentials.user?.email;
@@ -37,18 +37,18 @@ class LoginButton extends StatelessWidget {
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('No user found for that email.')),
+          const SnackBar(content: Text('Could not signup, please try again.')),
         );
       }
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
+      if (e.code == 'weak-password') {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('No user found on that email.')),
+          const SnackBar(content: Text('The password provided is too weak.')),
         );
-      } else if (e.code == 'wrong-password') {
+      } else if (e.code == 'email-already-in-use') {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-              content: Text('Wrong password provided for that user.')),
+              content: Text('The account already exists for that email.')),
         );
       }
     }

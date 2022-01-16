@@ -1,13 +1,14 @@
-import 'package:chat_app/screens/login/components/login_button.dart';
-import 'package:chat_app/screens/signup/signup_screen.dart';
+import 'package:chat_app/screens/login/login_screen.dart';
+import 'package:chat_app/screens/signup/components/signup_button.dart';
 import 'package:chat_app/widgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final _nameController = TextEditingController();
     final _emailController = TextEditingController();
     final _passwordController = TextEditingController();
 
@@ -23,6 +24,8 @@ class LoginScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
+              MyTextField(hint: 'Name', controller: _nameController),
+              const SizedBox(height: 20),
               MyTextField(hint: 'Email', controller: _emailController),
               const SizedBox(height: 10),
               MyTextField(
@@ -31,7 +34,8 @@ class LoginScreen extends StatelessWidget {
                 obscureText: true,
               ),
               const SizedBox(height: 10),
-              LoginButton(
+              SignupButton(
+                nameController: _nameController,
                 emailController: _emailController,
                 passwordController: _passwordController,
               ),
@@ -39,14 +43,14 @@ class LoginScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('New to the app?'),
+                  const Text('Already have an account?'),
                   TextButton(
                     onPressed: () => Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const SignupScreen()),
+                          builder: (context) => const LoginScreen()),
                     ),
-                    child: const Text('Signup'),
+                    child: const Text('Login'),
                   ),
                 ],
               ),
