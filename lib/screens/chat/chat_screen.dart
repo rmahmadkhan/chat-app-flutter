@@ -1,5 +1,5 @@
 import 'package:chat_app/screens/chat/components/message_stream.dart';
-import 'package:chat_app/screens/login/components/my_text_field.dart';
+import 'package:chat_app/widgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatelessWidget {
