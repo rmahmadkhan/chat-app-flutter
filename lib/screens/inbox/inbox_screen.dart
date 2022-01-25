@@ -1,4 +1,3 @@
-import 'package:chat_app/screens/chat/chat_screen.dart';
 import 'package:chat_app/screens/inbox/components/chat_tile.dart';
 import 'package:chat_app/screens/login/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -30,10 +29,12 @@ class InboxScreen extends StatelessWidget {
         itemCount: 3,
         itemBuilder: (context, index) => ChatTile(
           'Name',
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const ChatScreen()),
-          ),
+          onTap: () {
+            //   Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => const ChatScreen()),
+            // );
+          },
         ),
         separatorBuilder: (context, index) => const SizedBox(height: 10),
         padding: const EdgeInsets.all(8.0),
