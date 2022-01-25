@@ -1,4 +1,5 @@
 import 'package:chat_app/screens/chat/components/message_stream.dart';
+import 'package:chat_app/screens/inbox/components/logout_button.dart';
 import 'package:chat_app/widgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,10 @@ class ChatScreen extends StatelessWidget {
     final _messageController = TextEditingController();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Chat')),
+      appBar: AppBar(
+        title: const Text('Chat'),
+        actions: const [LogoutButton()],
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10),

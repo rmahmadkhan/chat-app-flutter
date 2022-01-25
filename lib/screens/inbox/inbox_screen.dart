@@ -1,6 +1,5 @@
 import 'package:chat_app/screens/inbox/components/chat_tile.dart';
-import 'package:chat_app/screens/login/login_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:chat_app/screens/inbox/components/logout_button.dart';
 import 'package:flutter/material.dart';
 
 class InboxScreen extends StatelessWidget {
@@ -11,19 +10,7 @@ class InboxScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Inbox'),
-        actions: [
-          IconButton(
-            onPressed: () async {
-              await FirebaseAuth.instance.signOut();
-
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const LoginScreen()),
-              );
-            },
-            icon: const Icon(Icons.power_settings_new),
-          ),
-        ],
+        actions: const [LogoutButton()],
       ),
       body: ListView.separated(
         itemCount: 3,
