@@ -1,4 +1,4 @@
-import 'package:chat_app/screens/inbox/inbox_screen.dart';
+import 'package:chat_app/screens/chat/chat_screen.dart';
 import 'package:chat_app/widgets/my_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +33,7 @@ class LoginButton extends StatelessWidget {
       if (email != null) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const InboxScreen()),
+          MaterialPageRoute(builder: (context) => ChatScreen(email)),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(

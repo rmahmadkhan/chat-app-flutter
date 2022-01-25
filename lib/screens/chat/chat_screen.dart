@@ -3,7 +3,8 @@ import 'package:chat_app/widgets/my_text_field.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatelessWidget {
-  const ChatScreen({Key? key}) : super(key: key);
+  final String email;
+  const ChatScreen(this.email, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class ChatScreen extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: Column(
             children: [
-              const Expanded(child: MessageStream()),
+              Expanded(child: MessageStream(email)),
               Row(
                 children: [
                   Expanded(
